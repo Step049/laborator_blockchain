@@ -89,10 +89,10 @@ print(keyString)
 # print(string)
 
 
-dd = 'king'
-ll  = list(dd)
-st = bytearray(map(int,ll)).encode('hex')
-print(st)
+# dd = 'king'
+# ll  = list(dd)
+# st = bytearray(map(int,ll)).encode('hex')
+# print(st)
 # ss = dd.encode()
 # rt = bytearray.from(dd)
 # rt = bin(rt)

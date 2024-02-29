@@ -236,8 +236,6 @@ print("Вопрос 13")
 
 # Полученное ранее значение является шестнадцатеричной формой представления ключевой строки. Строка имеет следующий формат: WSflag{_____}
 
+keyString = bytearray.fromhex(sborSecretInfo).decode()
 
-# keyString = bytearray.fromhex(sborSecretInfo).decode
-
-# print(keyString)
-
+print("Ключевая строка: ",keyString)
