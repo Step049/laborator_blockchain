@@ -14,8 +14,6 @@ def linPoisk(number, ss):
         if ss[i] == number:
             print(coun)
             return i
-    
-    
 
 
 def binPoisk(number, ss): 
