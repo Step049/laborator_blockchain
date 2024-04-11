@@ -1,10 +1,15 @@
-# подключение файла с функциями поиска
-# import poisk
-# print(poisk.linPoisk(number, spisok))
+
 
 
 import json
 import os
+
+# подключение файла с функциями поиска
+# import poisk
+# подключение файла с функциями сортировки
+import sort
+
+
 
 
 arr = os.listdir('transactions')
@@ -17,22 +22,27 @@ for i in arr:
 
 # spisok = sorted(spisok, key = lambda x:x['index'])   #сортировка
 
+# number = int(input())
 
-
-
-# ss = [9,8,7,6,5,4,3,2,1,2,3,4,5,4,3]
-
-# сортировка выбором/отбором
-
+# print(poisk.linPoisk(number, spisok))
 
 
 
 
 
-# sortOtbor(spisok)
+
+
+
+
+
+
+
+sort.sortBubble(spisok)
+ 
+
+# sort.sortOtbor(spisok)
 
 for i in spisok:
     print(i['index'])
-
 
 

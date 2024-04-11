@@ -36,6 +36,7 @@ print("Вопрос 2")
 forks =[]
 startFork = 0
 endFoerk = 0
+
 for i in range(len(spisok)-3):
 
     if startFork == 0:
