@@ -1,50 +1,50 @@
 # функции поиска линейный и бинарный
 # + счетчик 
 
-def linPoisk(number, ss):
-
-    if not ss:
+def get_block_by_index_linear(number, spisok):
+    if not spisok:
         return None
-    if not number:
-        return None
-    coun = 0
+    # if not number:
+    #     return None
+    counter = 0
+    index = None
+    for i in range(len(spisok)):
+        counter += 1
+        if spisok[i]['index'] == number:
+            index = i
+            break
+    print('Счетчик: ',counter)
+    return index
 
-    for i in range(len(ss)):
-        coun += 1
-        if ss[i] == number:
-            print(coun)
-            return i
 
-
-def binPoisk(number, ss): 
-    if not ss:
+def get_block_by_index_binary(number, spisok): 
+    if not spisok:
         return None
     first = 0
-    last = len(ss) - 1
-    coun = 0
+    last = len(spisok) - 1
+    counter = 0
 
-    if ss[first]['index'] == number:
-        print(coun)
+    if spisok[first]['index'] == number:
+        print('Счетчик: ',counter)
         return first
-    if ss[last]['index'] == number:
-        print(coun)
+    if spisok[last]['index'] == number:
+        print('Счетчик: ',counter)
         return last
     
     while (first != last):
-        coun += 1
+        counter += 1
         middl = (last + first) // 2
 
-        if ss[middl]['index'] == number:
-            print(coun)
+        if spisok[middl]['index'] == number:
+            print(counter)
             return middl
-        if ss[middl]['index'] > number:
+        if spisok[middl]['index'] > number:
             last = middl - 1
         else:
             first = middl + 1
-
-    print(coun)
-    
-    return None
+    else:
+        print('Счетчик: ',counter)
+        return None
     
 
 
