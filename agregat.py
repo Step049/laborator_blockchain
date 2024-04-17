@@ -8,7 +8,12 @@ import os
 import poisk
 # подключение файла с функциями сортировки
 import sort
+# подключение модуля для группировки по часам и минутам
+import datetime
 
+# unix_timestamp = 1284101485
+# date_time = datetime.datetime.fromtimestamp(unix_timestamp)
+# print(date_time.minute)
 
 arr = os.listdir('transactions')
 
@@ -20,8 +25,8 @@ for i in arr:
 
 spisok = sorted(spisok, key = lambda x:x['index'])   #сортировка
 
-number = int(input())
-print(poisk.get_block_by_index_linear(number, spisok))
+# number = int(input())
+# print(poisk.get_block_by_index_linear(number, spisok))
 
 # sort.sortBubble(spisok)
 
@@ -64,22 +69,6 @@ for i in range(len(spisok)-3):
 # 'secret_info': '', 'nonce': 4243,
 # 'hash': '000db7795a1ec51217e24246e264cb7b6227d3ec0f87fdd4dc165418f82ac2930108f5182e31c36df7394d5776cab559320a0bd10808b19d21303b42edc8767f'}
 
-# средний перевод блока в транзакциях
-# midlSumValue = []
-# for i in range(1,len(spisok)):
-#     ss = 0
-#     for j in range(len(spisok[i]['transactions']) - 1):
-#         ss += spisok[i]['transactions'][j]['value']
-#     ss = ss/(len(spisok[i]['transactions']) - 1)
-#     midlSumValue.append([spisok[i]['index'], ss])
-
-# вывод средней суммы и номера блока
-
-# for i in midlSumValue:
-#     print(f"№{i[0]} среднее: {i[1]}")
-
-
-
 
 # countTransactions = []
 # sumCountTransactions = 0
@@ -104,6 +93,7 @@ for i in range(len(spisok)-3):
 # for key in namesSumValues:
 #     print(key, namesSumValues[key])
 
+
 # макс вознаграждение
 # maxSumValue = list(namesSumValues.items())[0][1]
 # for key in namesSumValues:
@@ -122,12 +112,60 @@ for i in range(len(spisok)-3):
 # print("Мин вознаграждение",minSumValue)
 
 
-# for i in spisok[0]['transactions']:
-#     print(i)
+# средний перевод блока в транзакциях
+# midlSumValue = []
+# for i in range(1,len(spisok)):
+#     ss = 0
+#     for j in range(len(spisok[i]['transactions']) - 1):
+#         ss += spisok[i]['transactions'][j]['value']
+#     ss = ss/(len(spisok[i]['transactions']) - 1)
+#     midlSumValue.append([spisok[i]['index'], ss])
+
+# вывод средней суммы и номера блока
+
+# for i in midlSumValue:
+#     print(f"№{i[0]} среднее: {i[1]}")
 
 
-# Сгруппировать блоки по часам и минутам,  и вывести количество элементов в каждой группе 
+# print(spisok[1])
+
+
+# Сгруппировать блоки по часам и минутам,  и вывести количество элементов в каждой группе timestamp
 
 
 
 
+
+
+
+
+# for block in spisok:
+#     print(block['index'])
+#     print(datetime.datetime.fromtimestamp(block['timestamp']).minute)
+
+# группировка по часам вида: час - кол-во блоков в этот час
+
+groupHour = {}
+for block in spisok:
+    blockHour = (datetime.datetime.fromtimestamp(block['timestamp'])).hour
+    if blockHour in groupHour:
+        groupHour[blockHour] += 1
+    else:
+        groupHour[blockHour] = 1
+
+# for key in groupHour:
+#     print(f"hour: {key}   count of blocks: {groupHour[key]}")
+
+# группировка по минутам вида: минута - кол-во блоков в эту минуту
+
+groupMinute = {}
+
+for block in spisok:
+    blockMinute = (datetime.datetime.fromtimestamp(block['timestamp'])).minute
+    if blockMinute in groupMinute:
+        groupMinute[blockMinute] += 1
+    else:
+        groupMinute[blockMinute] = 1
+
+for key in groupMinute:
+    print(f"minute: {key}   count of blocks: {groupMinute[key]}")
